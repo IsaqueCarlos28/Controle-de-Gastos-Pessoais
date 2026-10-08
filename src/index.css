@@ -1,0 +1,543 @@
+/* ===================================
+   RESET GERAL
+=================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* ===================================
+ PALETA E TOKENS DO PROJETO
+=================================== */
+:root {
+  --ink: #3a4354;           /* texto principal / títulos (cinza-ardósia, sem preto puro) */
+  --ink-soft: #737c8c;      /* texto secundário */
+  --ink-faint: #a2a9b6;     /* texto terciário / placeholders */
+
+  --paper: #f6f4ef;         /* fundo da página — bege claro, mais quente que cinza-azulado */
+  --surface: #fffefb;       /* superfícies (painéis) — branco levemente quente */
+  --surface-alt: #f4f1ea;   /* linhas alternadas do extrato */
+
+  --line: #e6e2d8;          /* divisores finos */
+  --line-strong: #d3cec0;
+
+  --brass: #a9854f;         /* acento corporativo (latão), mais claro */
+  --brass-soft: #f3e9d6;
+
+  --forest: #5c8a72;        /* receitas / positivo — verde salvia, menos saturado */
+  --forest-soft: #e9f1ec;
+
+  --brick: #b06a5c;         /* despesas / negativo — terracota, sem vermelho pesado */
+  --brick-soft: #f6ebe7;
+
+  --shadow-sm: 0 1px 2px rgba(58, 67, 84, 0.05);
+  --shadow-md: 0 12px 32px rgba(58, 67, 84, 0.08);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+}
+
+/* ===================================
+ BODY
+=================================== */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 56px 20px;
+
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* ===================================
+ CONTAINER PRINCIPAL
+=================================== */
+.container {
+  width: 100%;
+  max-width: 760px;
+
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* ===================================
+ HEADER
+=================================== */
+.header {
+  padding: 36px 40px 28px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--surface);
+  font-family: 'Source Serif 4', serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.brand-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--ink-soft);
+}
+
+.header h1 {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 500;
+  font-size: clamp(26px, 4vw, 32px);
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.header p {
+  max-width: 480px;
+  margin-top: 10px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===================================
+ CARDS DE ESTATÍSTICAS
+=================================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  min-width: 0;
+  padding: 22px 24px;
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.card:last-child {
+  border-right: none;
+}
+
+.label {
+  display: block;
+  color: var(--ink-faint);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.number {
+  display: block;
+  margin-top: 8px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 24px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.number.blue {
+  color: var(--forest);
+}
+
+.number.pink {
+  color: var(--brick);
+}
+
+/* ===================================
+ PAINÉIS (formulário / extrato)
+=================================== */
+.panel {
+  padding: 28px 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel:last-of-type {
+  border-bottom: none;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.panel-title {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+
+.panel-header .panel-title {
+  margin-bottom: 0;
+}
+
+/* ===================================
+ ADICIONAR LANÇAMENTO
+=================================== */
+.add-task {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.add-task input {
+  flex: 1;
+  min-width: 160px;
+  padding: 11px 13px;
+
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  outline: none;
+
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add-task input.input-value {
+  flex: 0 0 140px;
+}
+
+.add-task input::placeholder {
+  color: var(--ink-faint);
+}
+
+.add-task input:focus {
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px var(--brass-soft);
+}
+
+/* Selects de tipo e categoria no formulário */
+.input-select {
+  flex: 0 0 160px;
+  padding: 11px 13px;
+
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  outline: none;
+
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-select:focus {
+  border-color: var(--brass);
+  box-shadow: 0 0 0 3px var(--brass-soft);
+}
+
+.btn-add {
+  padding: 11px 22px;
+
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-sm);
+
+  background: var(--ink);
+  color: var(--surface);
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-add:hover {
+  background: #4a5568;
+  border-color: #4a5568;
+}
+
+.btn-add:active {
+  background: #2e3646;
+}
+
+/* ===================================
+ FILTROS
+=================================== */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 8px 12px;
+
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+
+  background: var(--surface);
+  color: var(--ink-soft);
+
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.filter-select:hover,
+.filter-select:focus {
+  border-color: var(--brass);
+  color: var(--ink);
+}
+
+/* ===================================
+ EXTRATO DE LANÇAMENTOS
+=================================== */
+.tasks {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.transaction-income,
+.transaction-expense {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 14px 16px;
+
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.transaction-income:nth-child(even),
+.transaction-expense:nth-child(even) {
+  background: var(--surface-alt);
+}
+
+.transaction-income::before,
+.transaction-expense::before {
+  content: '';
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.transaction-income::before {
+  background: var(--forest);
+}
+
+.transaction-expense::before {
+  background: var(--brick);
+}
+
+/* Informações do lançamento (título e data/categoria) */
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.transaction-title {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transaction-date {
+  color: var(--ink-faint);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Valor do lançamento */
+.transaction-amount {
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.transaction-amount.income {
+  color: var(--forest);
+}
+
+.transaction-amount.expense {
+  color: var(--brick);
+}
+
+/* Botão de remover */
+.btn-remove {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+
+  color: var(--ink-faint);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.btn-remove:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-alt);
+  color: var(--brick);
+}
+
+/* Estado vazio da lista de lançamentos */
+.tasks:empty {
+  border: 1px dashed var(--line-strong);
+}
+
+.tasks:empty::after {
+  content: 'Nenhum lançamento ainda. Adicione o primeiro acima.';
+  display: block;
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 13px;
+}
+
+/* ===================================
+ RODAPÉ
+=================================== */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 18px 40px;
+
+  background: var(--surface-alt);
+  color: var(--ink-faint);
+  font-size: 11.5px;
+}
+
+/* ===================================
+ ACESSIBILIDADE
+=================================== */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+/* ===================================
+ RESPONSIVIDADE
+=================================== */
+@media (max-width: 640px) {
+  body {
+      padding: 24px 12px;
+  }
+
+  .header,
+  .panel,
+  .footer {
+      padding-left: 22px;
+      padding-right: 22px;
+  }
+
+  .stats {
+      grid-template-columns: 1fr;
+  }
+
+  .card {
+      border-right: none;
+  }
+
+  .add-task {
+      flex-direction: column;
+  }
+
+  .add-task input.input-value,
+  .input-select {
+      flex: 1;
+      width: 100%;
+  }
+
+  .btn-add {
+      width: 100%;
+  }
+
+  .filters {
+      width: 100%;
+  }
+
+  .filter-select {
+      flex: 1;
+      min-width: 0;
+  }
+
+  .transaction-income,
+  .transaction-expense {
+      align-items: flex-start;
+  }
+
+  .footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+  }
+}
